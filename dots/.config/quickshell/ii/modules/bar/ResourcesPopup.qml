@@ -66,64 +66,64 @@ StyledPopup {
   }
 
   Row {
-    anchors.centerIn: parent
-    spacing: 12
+      anchors.centerIn: parent
+      spacing: 12
 
-    Column {
-      anchors.top: parent.top
-      spacing: 8
-
-      ResourceHeaderItem {
-        icon: "memory"
-        label: "RAM"
-      }
       Column {
-        spacing: 4
-        ResourceItem {
-          icon: "clock_loader_60"
-          label: Translation.tr("Used:")
-          value: formatKB(ResourceUsage.memoryUsed)
-        }
-        ResourceItem {
-          icon: "check_circle"
-          label: Translation.tr("Free:")
-          value: formatKB(ResourceUsage.memoryFree)
-        }
-        ResourceItem {
-          icon: "empty_dashboard"
-          label: Translation.tr("Total:")
-          value: formatKB(ResourceUsage.memoryTotal)
-        }
-      }
-    }
+          anchors.top: parent.top
+          spacing: 8
 
-    Column {
-      visible: ResourceUsage.swapTotal > 0
-      anchors.top: parent.top
-      spacing: 8
-
-      ResourceHeaderItem {
-        icon: "swap_horiz"
-        label: "Swap"
+          ResourceHeaderItem {
+              icon: "memory"
+              label: "RAM"
+          }
+          Column {
+              spacing: 4
+              ResourceItem {
+                  icon: "clock_loader_60"
+                  label: Translation.tr("Used:")
+                  value: root.formatKB(ResourceUsage.memoryUsed)
+              }
+              ResourceItem {
+                  icon: "check_circle"
+                  label: Translation.tr("Free:")
+                  value: root.formatKB(ResourceUsage.memoryFree)
+              }
+              ResourceItem {
+                  icon: "empty_dashboard"
+                  label: Translation.tr("Total:")
+                  value: root.formatKB(ResourceUsage.memoryTotal)
+              }
+          }
       }
+
       Column {
-        spacing: 4
-        ResourceItem {
-          icon: "clock_loader_60"
-          label: Translation.tr("Used:")
-          value: formatKB(ResourceUsage.swapUsed)
-        }
-        ResourceItem {
-          icon: "check_circle"
-          label: Translation.tr("Free:")
-          value: formatKB(ResourceUsage.swapFree)
-        }
-        ResourceItem {
-          icon: "empty_dashboard"
-          label: Translation.tr("Total:")
-          value: formatKB(ResourceUsage.swapTotal)
-        }
-      }
+          visible: ResourceUsage.swapTotal > 0
+          anchors.top: parent.top
+          spacing: 8
+
+          ResourceHeaderItem {
+              icon: "swap_horiz"
+              label: "Swap"
+          }
+          Column {
+              spacing: 4
+              ResourceItem {
+                  icon: "clock_loader_60"
+                  label: Translation.tr("Used:")
+                  value: root.formatKB(ResourceUsage.swapUsed)
+              }
+              ResourceItem {
+                  icon: "check_circle"
+                  label: Translation.tr("Free:")
+                  value: root.formatKB(ResourceUsage.swapFree)
+              }
+              ResourceItem {
+                  icon: "empty_dashboard"
+                  label: Translation.tr("Total:")
+                  value: root.formatKB(ResourceUsage.swapTotal)
+              }
+          }
     }
 
     Column {

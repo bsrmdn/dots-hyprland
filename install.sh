@@ -1,41 +1,22 @@
 #!/usr/bin/env bash
+# TODO: Remove this script (install.sh) after 2025.12.01
+
+STY_RED='\e[31m'
+STY_RST='\e[00m'
+STY_INVERT='\e[7m'
+
+printf "${STY_RED}"
+printf "========================================================================\n"
+printf "${STY_INVERT}"
+printf "! ATTENTION !"
+printf "${STY_RST}\n"
+printf "${STY_RED}"
+printf "You are using \"./install.sh\" which is kept for compatibility.\n"
+printf "Please use \"./setup install\" instead.\n"
+printf "The old \"./install.sh\" is planned to be removed after 2025.12.01.\n"
+printf "========================================================================\n"
+printf "${STY_RST}"
+sleep 5
+
 cd "$(dirname "$0")"
-export base="$(pwd)"
-source ./sdata/lib/environment-variables.sh
-source ./sdata/lib/functions.sh
-source ./sdata/lib/package-installers.sh
-source ./sdata/lib/options.sh
-
-prevent_sudo_or_root
-set -e
-
-#####################################################################################
-# For uninstall script
-  if [[ "${EXPERIMENTAL_UNINSTALL_SCRIPT}" = true ]]; then
-    source ./sdata/exp/uninstall.sh
-    exit
-  fi
-#####################################################################################
-# 0. Before we start
-if [[ "${SKIP_ALLGREETING}" != true ]]; then
-  source ./sdata/step/0.install-greeting.sh
-fi
-#####################################################################################
-if [[ "${SKIP_ALLDEPS}" != true ]]; then
-  printf "${STY_CYAN}[$0]: 1. Install dependencies\n${STY_RST}"
-  source ./sdata/step/1.install-deps-selector.sh
-fi
-#####################################################################################
-if [[ "${SKIP_ALLSETUPS}" != true ]]; then
-  printf "${STY_CYAN}[$0]: 2. Setup for permissions/services etc\n${STY_RST}"
-  source ./sdata/step/2.install-setups-selector.sh
-fi
-#####################################################################################
-if [[ "${SKIP_ALLFILES}" != true ]]; then
-  printf "${STY_CYAN}[$0]: 3. Copying config files\n${STY_RST}"
-  if [[ "${EXPERIMENTAL_FILES_SCRIPT}" != true ]]; then
-    source ./sdata/step/3.install-files.sh
-  else
-    source ./sdata/step/3.install-files.experimental.sh
-  fi
-fi
+./setup install "$@"
