@@ -172,7 +172,7 @@ Item {
                                                     delegate: KeyboardKey {
                                                         required property var modelData
                                                         key: keySubstitutions[modelData] || modelData
-                                                        pixelSize: Config.options.appearance.keybinds.pixelSize.key
+                                                        pixelSize: Config.options.appearance.keybinds.fontSize.key
                                                     }
                                                 }
                                                 StyledText {
@@ -184,7 +184,7 @@ Item {
                                                     id: keybindKey
                                                     visible: !Config.options.appearance.keybinds.useMacLikeShortcut && !keyBlacklist.includes(modelData.key)
                                                     key: keySubstitutions[modelData.key] || modelData.key
-                                                    pixelSize: Config.options.appearance.keybinds.pixelSize.key
+                                                    pixelSize: Config.options.appearance.keybinds.fontSize.key
                                                     color: Appearance.colors.colOnLayer0
                                                 }
                                             }
@@ -200,7 +200,7 @@ Item {
                                                 StyledText {
                                                     id: commentText
                                                     anchors.centerIn: parent
-                                                    font.pixelSize: Config.options.appearance.keybinds.pixelSize.comment || Appearance.font.pixelSize.smaller
+                                                    font.pixelSize: Config.options.appearance.keybinds.fontSize.comment || Appearance.font.pixelSize.smaller
                                                     text: modelData.comment
                                                 }
                                             }
