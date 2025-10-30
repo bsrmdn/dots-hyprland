@@ -178,6 +178,21 @@ MouseArea {
                     if (GlobalStates.screenUnlockFailed) wrongPasswordShakeAnim.restart();
                 }
             }
+
+            // We're drawing dots manually
+            property bool materialShapeChars: Config.options.lock.materialShapeChars
+            color: ColorUtils.transparentize(Appearance.colors.colOnLayer1, materialShapeChars ? 1 : 0)
+            Loader {
+                active: passwordBox.materialShapeChars
+                anchors {
+                    fill: parent
+                    leftMargin: passwordBox.padding
+                    rightMargin: passwordBox.padding
+                }
+                sourceComponent: PasswordChars {
+                    length: root.context.currentText.length
+                }
+            }
         }
 
         ToolbarButton {
