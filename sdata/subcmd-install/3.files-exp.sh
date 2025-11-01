@@ -7,11 +7,9 @@
 # TODO: add --exp-files-path <path>   Use <path> instead of the default yaml config
 # TODO: add --exp-files-regen         Force copy the default config to ${EXP_FILE_PATH} (auto do this when not existed)
 # TODO: Implement versioning, i.e. when user-defined yaml config file has version number mismatch with the default one, produce error. If only minor version number is not the same, the error can be ommitted via --exp-file-no-strict .
-# TODO: add --exp-files-no-strict     Ignore error when minor version number is not the same
-#
-# Stage 2 todos:
-# TODO: Implement symlink (readable or non-readable) as sync mode
-# TODO: add --exp-file-reset-symlink  Try to remove all symlink in .config and .local, which point to the local repo
+# TODO: Implement user-define yaml with merging (override) ability for user who only wants little customization and is satisfied with most of the defaults.
+# TODO: Implement symlink (both read-write and read-only) as sync mode
+# TODO: Implement --exp-file-reset-symlink to try to remove all symlink in .config and .local, which point to the local repo
 # TODO: Update help and doc about `--exp-files` and the yaml config, including the possible values of mode.
 #
 # Stage 3 todos:
