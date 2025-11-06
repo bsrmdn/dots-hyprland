@@ -73,70 +73,70 @@ StyledPopup {
           anchors.top: parent.top
           spacing: 8
 
-          ResourceHeaderItem {
-              icon: "memory"
-              label: "RAM"
-          }
-          Column {
-              spacing: 4
-              ResourceItem {
-                  icon: "clock_loader_60"
-                  label: Translation.tr("Used:")
-                  value: root.formatKB(ResourceUsage.memoryUsed)
-              }
-              ResourceItem {
-                  icon: "check_circle"
-                  label: Translation.tr("Free:")
-                  value: root.formatKB(ResourceUsage.memoryFree)
-              }
-              ResourceItem {
-                  icon: "empty_dashboard"
-                  label: Translation.tr("Total:")
-                  value: root.formatKB(ResourceUsage.memoryTotal)
-              }
-          }
-      }
+            StyledPopupHeaderRow {
+                icon: "memory"
+                label: "RAM"
+            }
+            Column {
+                spacing: 4
+                StyledPopupValueRow {
+                    icon: "clock_loader_60"
+                    label: Translation.tr("Used:")
+                    value: root.formatKB(ResourceUsage.memoryUsed)
+                }
+                StyledPopupValueRow {
+                    icon: "check_circle"
+                    label: Translation.tr("Free:")
+                    value: root.formatKB(ResourceUsage.memoryFree)
+                }
+                StyledPopupValueRow {
+                    icon: "empty_dashboard"
+                    label: Translation.tr("Total:")
+                    value: root.formatKB(ResourceUsage.memoryTotal)
+                }
+            }
+        }
 
       Column {
           visible: ResourceUsage.swapTotal > 0
           anchors.top: parent.top
           spacing: 8
 
-          ResourceHeaderItem {
-              icon: "swap_horiz"
-              label: "Swap"
-          }
-          Column {
-              spacing: 4
-              ResourceItem {
-                  icon: "clock_loader_60"
-                  label: Translation.tr("Used:")
-                  value: root.formatKB(ResourceUsage.swapUsed)
-              }
-              ResourceItem {
-                  icon: "check_circle"
-                  label: Translation.tr("Free:")
-                  value: root.formatKB(ResourceUsage.swapFree)
-              }
-              ResourceItem {
-                  icon: "empty_dashboard"
-                  label: Translation.tr("Total:")
-                  value: root.formatKB(ResourceUsage.swapTotal)
-              }
-          }
-    }
+            StyledPopupHeaderRow {
+                icon: "swap_horiz"
+                label: "Swap"
+            }
+            Column {
+                spacing: 4
+                StyledPopupValueRow {
+                    icon: "clock_loader_60"
+                    label: Translation.tr("Used:")
+                    value: root.formatKB(ResourceUsage.swapUsed)
+                }
+                StyledPopupValueRow {
+                    icon: "check_circle"
+                    label: Translation.tr("Free:")
+                    value: root.formatKB(ResourceUsage.swapFree)
+                }
+                StyledPopupValueRow {
+                    icon: "empty_dashboard"
+                    label: Translation.tr("Total:")
+                    value: root.formatKB(ResourceUsage.swapTotal)
+                }
+            }
+        }
 
     Column {
       anchors.top: parent.top
       spacing: 8
 
-      ResourceHeaderItem {
+      StyledPopupHeaderRow {
         icon: "planner_review"
         label: "CPU"
       }
       Column {
         spacing: 4
-        ResourceItem {
+        StyledPopupValueRow {
           icon: "bolt"
           label: Translation.tr("Load:")
           value: (ResourceUsage.cpuUsage > 0.8 ? Translation.tr("High") : ResourceUsage.cpuUsage > 0.4 ? Translation.tr("Medium") : Translation.tr("Low")) + ` (${Math.round(ResourceUsage.cpuUsage * 100)}%)`
