@@ -11,6 +11,7 @@ Singleton {
         { identifier: "crosshair", materialSymbol: "point_scan" },
         { identifier: "resources", materialSymbol: "browse_activity" }
         { identifier: "fpsLimiter", materialSymbol: "speed" },
+        { identifier: "fpsLimiter", materialSymbol: "animation" },
         { identifier: "volumeMixer", materialSymbol: "volume_up" }
     ]
     
