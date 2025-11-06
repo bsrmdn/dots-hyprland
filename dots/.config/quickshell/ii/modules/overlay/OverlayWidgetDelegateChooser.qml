@@ -10,6 +10,7 @@ import qs.modules.overlay.crosshair
 import qs.modules.overlay.volumeMixer
 import qs.modules.overlay.recorder
 import qs.modules.overlay.resources
+import qs.modules.overlay.fpsLimiter
 
 DelegateChooser {
     id: root
@@ -19,4 +20,5 @@ DelegateChooser {
     DelegateChoice { roleValue: "volumeMixer"; VolumeMixer {} }
     DelegateChoice { roleValue: "recorder"; Recorder {} }
     DelegateChoice { roleValue: "resources"; Resources {} }
+    DelegateChoice { roleValue: "fpsLimiter"; FpsLimiter {} }
 }

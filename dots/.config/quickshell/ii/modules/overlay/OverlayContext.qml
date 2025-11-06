@@ -10,6 +10,8 @@ Singleton {
         { identifier: "volumeMixer", materialSymbol: "volume_up" },
         { identifier: "crosshair", materialSymbol: "point_scan" },
         { identifier: "resources", materialSymbol: "browse_activity" }
+        { identifier: "fpsLimiter", materialSymbol: "speed" },
+        { identifier: "volumeMixer", materialSymbol: "volume_up" }
     ]
     
     readonly property bool hasPinnedWidgets: root.pinnedWidgetIdentifiers.length > 0
