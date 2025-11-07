@@ -45,7 +45,6 @@ Singleton {
             // Reload files
             fileMeminfo.reload()
             fileStat.reload()
-            fileCpuinfo.reload()
 
             // Parse memory and swap usage
             const textMeminfo = fileMeminfo.text()
@@ -112,7 +111,18 @@ Singleton {
 
 	FileView { id: fileMeminfo; path: "/proc/meminfo" }
     FileView { id: fileStat; path: "/proc/stat" }
-    FileView { id: fileCpuinfo; path: "/proc/cpuinfo" }
+
+    Process {
+        id: findCpuMaxFreqProc
+        command: ["bash", "-c", "lscpu | grep 'CPU max MHz' | awk '{print $4}'"]
+        running: true
+        stdout: StdioCollector {
+            id: outputCollector
+            onStreamFinished: {
+                root.maxAvailableCpuString = (parseFloat(outputCollector.text) / 1000).toFixed(0) + " GHz"
+            }
+        }
+    }
 
 
     Process {
