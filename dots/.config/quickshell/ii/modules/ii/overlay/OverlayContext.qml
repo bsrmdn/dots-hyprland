@@ -10,8 +10,11 @@ Singleton {
         { identifier: "fpsLimiter", materialSymbol: "animation" },
         { identifier: "floatingImage", materialSymbol: "imagesmode" },
         { identifier: "recorder", materialSymbol: "screen_record" },
-        { identifier: "resources", materialSymbol: "browse_activity" },
         { identifier: "volumeMixer", materialSymbol: "volume_up" },
+        { identifier: "resources", materialSymbol: "browse_activity" },
+        // CUSTOM: Stickypad integration - START
+        { identifier: "stickypad", materialSymbol: "note_stack" }
+        // CUSTOM: Stickypad integration - END
     ]
     
     readonly property bool hasPinnedWidgets: root.pinnedWidgetIdentifiers.length > 0
