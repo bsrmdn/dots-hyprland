@@ -11,9 +11,7 @@ import qs.modules.overlay.volumeMixer
 import qs.modules.overlay.fpsLimiter
 import qs.modules.overlay.recorder
 import qs.modules.overlay.resources
-// CUSTOM: Stickypad integration - START
 import qs.modules.overlay.stickypad
-// CUSTOM: Stickypad integration - END
 
 DelegateChooser {
     id: root
@@ -27,5 +25,4 @@ DelegateChooser {
     DelegateChoice { roleValue: "volumeMixer"; VolumeMixer {} }
     // CUSTOM: Stickypad integration - START
     DelegateChoice { roleValue: "stickypad"; Stickypad {} }
-    // CUSTOM: Stickypad integration - END
 }
