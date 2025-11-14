@@ -142,6 +142,8 @@ Singleton {
                     property bool clickthrough: false
                     property real x: 100
                     property real y: 100
+                    property real width: 350
+                    property real height: 600
                 }
             }
 
