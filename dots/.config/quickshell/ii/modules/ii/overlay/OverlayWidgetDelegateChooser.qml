@@ -22,6 +22,7 @@ DelegateChooser {
     DelegateChoice { roleValue: "fpsLimiter"; FpsLimiter {} }
     DelegateChoice { roleValue: "recorder"; Recorder {} }
     DelegateChoice { roleValue: "resources"; Resources {} }
+    DelegateChoice { roleValue: "notes"; Stickypad {} }
     DelegateChoice { roleValue: "volumeMixer"; VolumeMixer {} }
     // CUSTOM: Stickypad integration - START
     DelegateChoice { roleValue: "stickypad"; Stickypad {} }
