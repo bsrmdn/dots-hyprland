@@ -213,39 +213,34 @@ for pattern in "${patterns[@]}"; do
       v mkdir -p "$(dirname "$to")"
     fi
 
-    # Execute based on mode
-    case $mode in
-      "sync")
-        if [[ -d "$from" ]]; then
-          warning_rsync_delete
-          v rsync -av --delete "${excludes[@]}" "$from/" "$to/"
-        else
-          warning_rsync_normal
-          # For files, don't use trailing slash and don't use --delete
-          v rsync -av "${excludes[@]}" "$from" "$to"
-        fi
-        ;;
-      "soft")
-        warning_rsync_normal
-        if [[ -d "$from" ]]; then
-          v rsync -av "${excludes[@]}" "$from/" "$to/"
-        else
-          # For files, don't use trailing slash
-          v rsync -av "${excludes[@]}" "$from" "$to"
-        fi
-        ;;
-      "hard")
-        v cp -r "$from" "$to"
-        ;;
-      "hard-backup")
-        if [[ -e "$to" ]]; then
-          if files_are_same "$from" "$to"; then
-            echo "Files are identical, skipping backup"
-          else
-            backup_number=$(get_next_backup_number "$to")
-            v mv "$to" "$to.old.$backup_number"
-            v cp -r "$from" "$to"
-          fi
+  # Execute based on mode
+  case "$mode" in
+    "sync")
+      if [[ -d "$from" ]]; then
+        warning_overwrite
+        v rsync -av --delete "${excludes[@]}" "$from/" "$to/"
+      else
+        warning_overwrite
+        # For files, don't use trailing slash and don't use --delete
+        v rsync -av "${excludes[@]}" "$from" "$to"
+      fi
+      ;;
+    "soft")
+      warning_overwrite
+      if [[ -d "$from" ]]; then
+        v rsync -av "${excludes[@]}" "$from/" "$to/"
+      else
+        # For files, don't use trailing slash
+        v rsync -av "${excludes[@]}" "$from" "$to"
+      fi
+      ;;
+    "hard")
+      v cp -r "$from" "$to"
+      ;;
+    "hard-backup")
+      if [[ -e "$to" ]]; then
+        if files_are_same "$from" "$to"; then
+          echo "Files are identical, skipping backup"
         else
           v cp -r "$from" "$to"
         fi
