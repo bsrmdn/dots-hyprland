@@ -1,8 +1,10 @@
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import Quickshell
 import Quickshell.Io
+import qs
 import qs.services
 import qs.modules.common
 import qs.modules.common.widgets
@@ -268,6 +270,18 @@ ContentPage {
             ContentSubsection {
                 title: Translation.tr("Bar style")
 
+                ConfigSwitch {
+                  buttonIcon: "ev_shadow"
+                  text: Translation.tr("Transparent")
+                  checked: !Config.options.bar.showBackground
+                  onCheckedChanged: {
+                    Config.options.bar.showBackground = !checked;
+                    Config.options.bar.cornerStyle = Config.options.bar.showBackground ? Config.options.bar.cornerStyle : 2; // Force rect when transparent
+                  }
+                  StyledToolTip {
+                    text: Translation.tr("Make bar background transparent")
+                  }
+                }
                 ConfigSelectionArray {
                     currentValue: Config.options.bar.cornerStyle
                     onSelected: newValue => {
